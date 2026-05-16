@@ -1,647 +1,700 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>顧客インタビュー代行サービス</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: #FFFFFF;
-      color: #1A1A2E;
-      font-size: 16px;
-      line-height: 1.8;
-      font-weight: 400;
+    body{
+      font-family:'Noto Sans JP',sans-serif;
+      color:#1A1A2E;
+      background:#FFFFFF;
+      line-height:1.8;
+      font-size:16px;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    img{
+      max-width:100%;
+      display:block;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    a{
+      text-decoration:none;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .container{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 24px;
     }
 
-    section {
-      padding: 80px 0;
+    section{
+      padding:80px 0;
     }
 
-    .section-bg {
-      background: #F5F7FF;
+    h1{
+      font-size:48px;
+      font-weight:700;
+      line-height:1.3;
+      letter-spacing:-0.02em;
     }
 
-    h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
+    h2{
+      font-size:32px;
+      font-weight:700;
+      line-height:1.4;
+      margin-bottom:24px;
     }
 
-    h2 {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 24px;
-      color: #1A1A2E;
+    h3{
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:16px;
     }
 
-    h3 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 16px;
+    p{
+      color:#1A1A2E;
     }
 
-    p {
-      color: #1A1A2E;
+    .sub-text{
+      color:#5C6070;
     }
 
-    .muted {
-      color: #5C6070;
+    .accent{
+      color:#2D6EF5;
     }
 
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      background: #F5F7FF;
+    .badge{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#F5F7FF;
+      color:#2D6EF5;
+      border:1px solid #DCE5FF;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:24px;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#2D6EF5;
+      color:#fff;
+      border-radius:8px;
+      padding:14px 32px;
+      font-weight:600;
+      transition:0.2s ease;
+      border:none;
     }
 
-    .hero-copy {
-      max-width: 620px;
+    .btn:hover{
+      background:#2459c8;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #E8ECF8;
-      border-radius: 999px;
-      padding: 10px 16px;
-      background: #FFFFFF;
-      margin-bottom: 24px;
-      color: #5C6070;
-      font-size: 14px;
+    .card{
+      background:#fff;
+      border:1px solid #E8ECF8;
+      border-radius:16px;
+      padding:32px;
     }
 
-    .hero-badge span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #FF6B6B;
-      display: inline-block;
+    /* ======================
+       FV
+    ====================== */
+
+    .hero{
+      background:#F5F7FF;
+      overflow:hidden;
+      padding-top:48px;
+      padding-bottom:48px;
     }
 
-    .hero-subcopy {
-      font-size: 18px;
-      color: #5C6070;
-      margin-bottom: 40px;
+    .hero-inner{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
     }
 
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #2D6EF5;
-      color: #FFFFFF;
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.2s ease;
-      border: none;
-      cursor: pointer;
+    .hero-copy p{
+      margin-top:24px;
+      margin-bottom:32px;
+      font-size:18px;
+      color:#5C6070;
     }
 
-    .cta-button:hover {
-      background: #2459C4;
+    .hero-image{
+      position:relative;
     }
 
-    .hero-card {
-      background: #FFFFFF;
-      border: 1px solid #E8ECF8;
-      border-radius: 16px;
-      padding: 32px;
+    .hero-image img{
+      border-radius:24px;
+      border:1px solid #E8ECF8;
+      object-fit:cover;
+      width:100%;
+      height:100%;
     }
 
-    .hero-card-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid #E8ECF8;
+    .hero-mini-card{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
     }
 
-    .hero-card-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .mini-box{
+      background:#fff;
+      border:1px solid #E8ECF8;
+      border-radius:16px;
+      padding:20px;
+      text-align:center;
     }
 
-    .icon-wrap {
-      width: 48px;
-      height: 48px;
-      border: 1px solid #E8ECF8;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .mini-box svg{
+      width:32px;
+      height:32px;
+      stroke:#2D6EF5;
+      margin:0 auto 12px;
+      fill:none;
+      stroke-width:1.8;
     }
 
-    .icon-wrap svg {
-      width: 24px;
-      height: 24px;
-      stroke: #2D6EF5;
-      fill: none;
-      stroke-width: 1.8;
+    .mini-box p{
+      font-size:14px;
+      line-height:1.6;
+      color:#1A1A2E;
     }
 
-    .problem-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+    /* ======================
+       Problems
+    ====================== */
+
+    .problem-section{
+      background:#fff;
     }
 
-    .problem-card,
-    .service-card,
-    .case-card,
-    .price-card {
-      background: #FFFFFF;
-      border: 1px solid #E8ECF8;
-      border-radius: 16px;
-      padding: 32px;
+    .problem-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:32px;
+      align-items:start;
     }
 
-    .problem-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .problem-list{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
     }
 
-    .problem-card li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: #1A1A2E;
+    .problem-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:20px;
+      border:1px solid #E8ECF8;
+      border-radius:16px;
+      background:#fff;
     }
 
-    .check {
-      color: #2D6EF5;
-      font-weight: 700;
-      flex-shrink: 0;
+    .check{
+      color:#2D6EF5;
+      font-weight:700;
+      margin-top:2px;
     }
 
-    .lead-text {
-      margin-top: 24px;
-      color: #5C6070;
+    /* ======================
+       Service
+    ====================== */
+
+    .service-section{
+      background:#F5F7FF;
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+    .service-cards{
+      margin-top:40px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
     }
 
-    .service-points {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .service-card ul{
+      margin-top:16px;
+      padding-left:20px;
     }
 
-    .service-point {
-      padding: 20px;
-      border: 1px solid #E8ECF8;
-      border-radius: 12px;
-      background: #F5F7FF;
+    .service-card li{
+      margin-bottom:10px;
+      color:#5C6070;
     }
 
-    .number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #FF6B6B;
-      color: #FFFFFF;
-      font-weight: 700;
-      margin-bottom: 12px;
+    /* ======================
+       Case
+    ====================== */
+
+    .case-section{
+      background:#fff;
     }
 
-    .case-card {
-      margin-top: 40px;
+    .case-card{
+      position:relative;
+      overflow:hidden;
     }
 
-    .case-highlight {
-      border-left: 4px solid #2D6EF5;
-      padding-left: 20px;
-      margin: 24px 0;
-      color: #1A1A2E;
+    .case-label{
+      display:inline-block;
+      background:#FFF1F1;
+      color:#FF6B6B;
+      border:1px solid #FFD4D4;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:600;
+      margin-bottom:20px;
     }
 
-    .case-note {
-      background: #F5F7FF;
-      border: 1px solid #E8ECF8;
-      border-radius: 12px;
-      padding: 20px;
-      color: #5C6070;
-      margin-top: 24px;
+    /* ======================
+       CTA
+    ====================== */
+
+    .cta-section{
+      background:#F5F7FF;
     }
 
-    .price-layout {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 24px;
-      align-items: stretch;
-      margin-top: 40px;
+    .cta-wrapper{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:32px;
+      align-items:center;
     }
 
-    .price-card p + p {
-      margin-top: 20px;
+    .price-box{
+      background:#fff;
+      border:1px solid #E8ECF8;
+      border-radius:16px;
+      padding:40px;
     }
 
-    .qr-box {
-      background: #FFFFFF;
-      border: 1px solid #E8ECF8;
-      border-radius: 16px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    .qr-box{
+      width:200px;
+      height:200px;
+      border:2px dashed #B8C4E5;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:24px;
+      background:#fff;
+      color:#5C6070;
+      font-size:14px;
     }
 
-    .qr-placeholder {
-      width: 200px;
-      height: 200px;
-      border: 2px dashed #C9D3EE;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5C6070;
-      font-size: 14px;
-      margin-bottom: 20px;
-      background:
-        linear-gradient(90deg, #F5F7FF 50%, transparent 50%),
-        linear-gradient(#F5F7FF 50%, transparent 50%);
-      background-size: 24px 24px;
+    footer{
+      padding:32px 0;
+      border-top:1px solid #E8ECF8;
+      text-align:center;
+      color:#5C6070;
+      font-size:14px;
     }
 
-    .section-label {
-      display: inline-block;
-      color: #2D6EF5;
-      font-weight: 600;
-      margin-bottom: 12px;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-    }
+    /* ======================
+       Responsive
+    ====================== */
 
-    footer {
-      padding: 32px 0;
-      border-top: 1px solid #E8ECF8;
-      text-align: center;
-      color: #5C6070;
-      font-size: 14px;
-    }
+    @media(max-width:768px){
 
-    @media (max-width: 768px) {
-      body {
-        font-size: 14.4px;
+      body{
+        font-size:14px;
       }
 
-      section {
-        padding: 48px 16px;
+      section{
+        padding:48px 0;
       }
 
-      .container {
-        padding: 0;
+      .container{
+        padding:0 16px;
       }
 
-      h1 {
-        font-size: 43px;
+      h1{
+        font-size:38px;
       }
 
-      h2 {
-        font-size: 28px;
-      }
-
-      h3 {
-        font-size: 18px;
-      }
-
-      .hero {
-        min-height: auto;
+      h2{
+        font-size:28px;
       }
 
       .hero-inner,
-      .problem-list,
-      .service-grid,
-      .price-layout {
-        grid-template-columns: 1fr;
+      .problem-grid,
+      .service-cards,
+      .cta-wrapper,
+      .hero-mini-card{
+        grid-template-columns:1fr;
       }
 
-      .hero-card,
-      .problem-card,
-      .service-card,
-      .case-card,
-      .price-card,
-      .qr-box {
-        padding: 24px;
+      .hero{
+        padding-top:32px;
       }
 
-      .hero-subcopy {
-        font-size: 16px;
+      .hero-copy{
+        order:2;
       }
 
-      .qr-placeholder {
-        width: 180px;
-        height: 180px;
+      .hero-image{
+        order:1;
       }
+
+      .card,
+      .price-box{
+        padding:24px;
+      }
+
+      .qr-box{
+        width:100%;
+        max-width:200px;
+      }
+
     }
+
   </style>
 </head>
+
 <body>
 
-  <!-- Section 1 -->
+  <!-- ======================
+       SECTION 1
+  ======================= -->
+
   <section class="hero">
     <div class="container">
+
       <div class="hero-inner">
 
         <div class="hero-copy">
-          <div class="hero-badge">
-            <span></span>
-            顧客の本音を、発信のヒントに
+
+          <div class="badge">
+            顧客インタビュー代行サービス
           </div>
 
           <h1>
-            売れる言葉を、<br>
-            お客さんに教わる
+            売れる言葉は<br>
+            <span class="accent">顧客に聞け</span>
           </h1>
 
-          <p class="hero-subcopy">
-            顧客インタビューを通して、選ばれる理由を整理します。<br>
-            HP・LP・SNSで伝えるべき言葉を、一緒に見つけていきます。
+          <p>
+            売れる理由は、事業主さま自身よりも、
+            お客さんのほうが知っていることがあります。<br>
+            顧客インタビューを通して、
+            HP・LP・SNSで伝えるべき言葉を一緒に整理します。
           </p>
 
-          <a href="#contact" class="cta-button">
+          <a href="#cta" class="btn">
             まずは気軽に無料相談
           </a>
+
+          <div class="hero-mini-card">
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="10" cy="7" r="4"/>
+                <path d="M20 8v6"/>
+                <path d="M23 11h-6"/>
+              </svg>
+              <p>顧客インタビューを代行</p>
+            </div>
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <p>HP・LP改善のヒントを整理</p>
+            </div>
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              <p>キャッチコピー制作も支援</p>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="hero-card">
-          <div class="hero-card-item">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 5h16v10H7l-3 3V5z"></path>
-              </svg>
-            </div>
-            <div>
-              <h3>顧客の声を深くヒアリング</h3>
-              <p class="muted">表面的なアンケートでは見えない、本音や比較理由を丁寧に掘り下げます。</p>
-            </div>
-          </div>
-
-          <div class="hero-card-item">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 19h16"></path>
-                <path d="M7 15l4-4 3 3 4-6"></path>
-              </svg>
-            </div>
-            <div>
-              <h3>発信の方向性を整理</h3>
-              <p class="muted">SNSやホームページで、何を伝えるべきかを明確にしていきます。</p>
-            </div>
-          </div>
-
-          <div class="hero-card-item">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2v20"></path>
-                <path d="M5 7h9a4 4 0 0 1 0 8H8"></path>
-              </svg>
-            </div>
-            <div>
-              <h3>キャッチコピーづくりも支援</h3>
-              <p class="muted">顧客の言葉をベースに、伝わる表現づくりまでサポートします。</p>
-            </div>
-          </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400&auto=format&fit=crop" alt="顧客インタビューの様子">
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- Section 2 -->
-  <section>
+  <!-- ======================
+       SECTION 2
+  ======================= -->
+
+  <section class="problem-section">
     <div class="container">
 
-      <span class="section-label">SECTION 02</span>
-      <h2>こんなお悩みはありませんか</h2>
+      <div class="problem-grid">
 
-      <div class="problem-list">
+        <div>
+          <div class="badge">
+            課題提起
+          </div>
 
-        <div class="problem-card">
-          <ul>
-            <li>
-              <span class="check">✓</span>
-              <span>自社の方が良い商品だと思うのに、同業他社に負けてしまう。</span>
-            </li>
+          <h2>
+            こんなお悩みはありませんか
+          </h2>
 
-            <li>
-              <span class="check">✓</span>
-              <span>会社のHPを立ち上げたままで、どう育てていけばいいか分からない。</span>
-            </li>
-          </ul>
+          <div class="problem-list">
+
+            <div class="problem-item">
+              <div class="check">✓</div>
+              <p>
+                自社の方が絶対いい商品なのに、同業他社に負けてしまう
+              </p>
+            </div>
+
+            <div class="problem-item">
+              <div class="check">✓</div>
+              <p>
+                会社のHPは立ち上げた時のまま。どう育てればいいか分からない
+              </p>
+            </div>
+
+            <div class="problem-item">
+              <div class="check">✓</div>
+              <p>
+                SNS投稿を頑張っているが、反応につながっている実感がない
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="problem-card">
-          <ul>
-            <li>
-              <span class="check">✓</span>
-              <span>SNSを毎日更新しているけれど、反応につながっている実感がない。</span>
-            </li>
+        <div class="card">
+          <h3>
+            情報発信を頑張るほど、
+            「本当に響いているのか」が気になりませんか。
+          </h3>
 
-            <li>
-              <span class="check">✓</span>
-              <span>何を強みとして伝えるべきか、自分では整理しきれない。</span>
-            </li>
-          </ul>
+          <p class="sub-text">
+            「SNSは毎日投稿しなくては」と、
+            日々努力されている事業主さまも多いと思います。<br><br>
+
+            その投稿やキャッチコピー、
+            視聴者の心に届くものになってほしいですよね。<br><br>
+
+            ただ、自分ひとりで考えていると、
+            本当のお客さん目線から少しずつズレていくことがあります。
+          </p>
         </div>
 
       </div>
 
-      <p class="lead-text">
-        「SNSは毎日投稿しなくては」と、日々努力されている事業主さまも多いと思います。<br>
-        せっかく時間をかけて発信するなら、その投稿が視聴者の心に届くものになってほしいですよね。<br>
-        そのためには、まず「お客さんが何を感じているか」を知ることが大切かもしれません。
+    </div>
+  </section>
+
+  <!-- ======================
+       SECTION 3
+  ======================= -->
+
+  <section class="service-section">
+    <div class="container">
+
+      <div class="badge">
+        サービス概要
+      </div>
+
+      <h2>
+        顧客の「本音」を、
+        事業の言葉に変えていきます
+      </h2>
+
+      <p class="sub-text" style="max-width:900px;">
+        顧客インタビューは、
+        「なんとなく良さそう」ではなく、
+        お客さんが本当に価値を感じているポイントを知るための手段です。<br><br>
+
+        商品・サービスの潜在顧客へ1時間程度のインタビューを実施し、
+        忙しい事業主さまに代わって、リアルな声を拾ってきます。
       </p>
 
+      <div class="service-cards">
+
+        <div class="card service-card">
+          <h3>
+            得られる情報
+          </h3>
+
+          <ul>
+            <li>ターゲット層が同業他社を選んでいる理由</li>
+            <li>常連のお客さまが自社を選び続けている理由</li>
+            <li>お客さん自身も言語化できていない価値観</li>
+            <li>購入前に感じていた不安や比較ポイント</li>
+          </ul>
+        </div>
+
+        <div class="card service-card">
+          <h3>
+            その後の活用
+          </h3>
+
+          <ul>
+            <li>HP・LPのキャッチコピー改善</li>
+            <li>SNS投稿の方向性整理</li>
+            <li>サービス紹介文の改善</li>
+            <li>自社の強みの再発見</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:24px;">
+        <p class="sub-text">
+          「自分では強みだと思っていなかった部分が、
+          実は選ばれていた理由だった」
+          というケースも少なくありません。<br><br>
+
+          顧客の声を整理することで、
+          HP・LP・SNSなどの言葉づくりが、
+          ぐっと進めやすくなると思います。<br><br>
+
+          キャッチコピー作成も視野に入れてサポートします。
+        </p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Section 3 -->
-  <section class="section-bg">
+  <!-- ======================
+       SECTION 4
+  ======================= -->
+
+  <section class="case-section">
     <div class="container">
 
-      <span class="section-label">SECTION 03</span>
-      <h2>顧客インタビューで見えてくること</h2>
+      <div class="badge">
+        事例・根拠
+      </div>
 
-      <div class="service-grid">
+      <h2>
+        大手企業でも、
+        「顧客の声」が商品開発の起点になっています
+      </h2>
 
-        <div class="service-card">
-          <h3>サービス概要</h3>
+      <div class="card case-card">
 
-          <p>
-            顧客インタビューは、商品・サービスの潜在顧客に対して、1時間程度のヒアリングを行うサービスです。
-          </p>
-
-          <p style="margin-top: 16px;">
-            忙しい事業主さまに代わって、顧客の声を丁寧に拾い上げます。
-            1人の顧客の声を深く掘り下げることで、数字だけでは分からない「選ばれる理由」が見えてきます。
-          </p>
-
-          <p style="margin-top: 16px;">
-            自分で想像していた内容と、実際のお客さんの感じ方が違うケースも少なくありません。
-          </p>
+        <div class="case-label">
+          著名事例
         </div>
 
-        <div class="service-card">
-          <h3>得られる情報・メリット</h3>
+        <h3>
+          ライオン「ナノックス」の開発エピソード
+        </h3>
 
-          <div class="service-points">
+        <p class="sub-text">
+          ライオン社は主婦を定期的に集め、
+          グループインタビューを実施していました。<br><br>
 
-            <div class="service-point">
-              <div class="number">01</div>
-              <p>
-                ターゲット層の人が、なぜ同業他社を選んでいるのか。
-              </p>
-            </div>
+          その中で、
+          「汚れが落ちるのは当たり前。
+          むしろニオイのほうが気になる」
+          という本音を発見します。<br><br>
 
-            <div class="service-point">
-              <div class="number">02</div>
-              <p>
-                常連のお客さんが、自社を選び続けている理由。
-              </p>
-            </div>
+          この気づきをもとに、
+          ナノレベルの洗浄技術で
+          ニオイの原因へ直接アプローチする洗剤を開発。<br><br>
 
+          「目に見えない汚れ＝ニオイまで落とす」
+          というメッセージを打ち出した結果、
+          ナノックスは洗剤市場を代表するブランドへ成長しました。<br><br>
+
+          顧客インタビューは、
+          商品開発だけでなく、
+          「どう伝えるか」を見つけるヒントにもなります。
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================
+       SECTION 5
+  ======================= -->
+
+  <section class="cta-section" id="cta">
+    <div class="container">
+
+      <div class="cta-wrapper">
+
+        <div class="price-box">
+
+          <div class="badge">
+            料金・無料相談
           </div>
 
-          <p style="margin-top: 24px;">
-            こうした声をもとに、商品・サービスのブラッシュアップや、HP・LP・SNSのキャッチコピーづくりにつなげていきます。
-          </p>
-        </div>
+          <h2>
+            まずは、
+            どんなターゲットに
+            話を聞くべきか整理しましょう
+          </h2>
 
-      </div>
+          <p class="sub-text">
+            業種・企画意図・進め方によって、
+            必要なインタビュー内容は変わります。<br><br>
 
-    </div>
-  </section>
+            そのため、
+            「そのターゲット層なら、1件の声で〇〇円」
+            という形で、
+            個別にお見積もりをご提示しています。<br><br>
 
-  <!-- Section 4 -->
-  <section>
-    <div class="container">
-
-      <span class="section-label">SECTION 04</span>
-      <h2>顧客の声が、商品の方向性を変えることがあります</h2>
-
-      <div class="case-card">
-
-        <h3>ライオン「ナノックス」の開発事例</h3>
-
-        <div class="case-highlight">
-          ライオン社では、主婦を対象にしたグループインタビューを継続的に実施し、
-          「汚れが落ちるのは当たり前で、むしろニオイの方が気になる」という本音を把握しました。
-        </div>
-
-        <p>
-          この気づきをもとに、ナノレベルの洗浄技術でニオイの根本原因へアプローチする高濃度洗剤として「ナノックス」を開発。
-        </p>
-
-        <p style="margin-top: 16px;">
-          「目に見えない汚れ＝ニオイまで落とす」というメッセージを打ち出したことで、売上が伸び、今ではアタックやトップと並ぶ洗剤ブランドへ成長しています。
-        </p>
-
-        <div class="case-note">
-          顧客インタビューは、単なる感想集めではありません。<br>
-          お客さんの言葉から「本当に気にしていること」を見つけることで、商品の見せ方や伝え方が変わるケースがあります。
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 5 -->
-  <section class="section-bg" id="contact">
-    <div class="container">
-
-      <span class="section-label">SECTION 05</span>
-      <h2>まずは無料相談からご相談ください</h2>
-
-      <div class="price-layout">
-
-        <div class="price-card">
-          <h3>料金について</h3>
-
-          <p>
-            顧客インタビューの費用は、業種・企画意図・ターゲット層・進め方によって変わります。
+            まずは無料相談で、
+            「どんな声を集めると役立ちそうか」
+            一緒に整理できればと思います。
           </p>
 
-          <p>
-            そのため、まずは打ち合わせを行い、
-            「そのターゲット層なら、1件の声で〇〇円」という形で、個別にお見積もりをご提示しています。
-          </p>
-
-          <p>
-            無理な営業は行いませんので、まずは現在のお悩みや状況をお気軽にご相談ください。
-          </p>
-
-          <div style="margin-top: 32px;">
-            <a href="#" class="cta-button">
+          <div style="margin-top:32px;">
+            <a href="#" class="btn">
               LINEで無料相談する
             </a>
           </div>
+
         </div>
 
-        <div class="qr-box">
-          <img src="原田公式LINE.png" alt="原田公式LINE QRコード" style="width:200px;height:200px;object-fit:contain;margin-bottom:20px;">
+        <div class="card" style="text-align:center;">
 
-          <p class="muted">
-            LINE無料相談受付中<br>
-            QRコードを設置してください
+          <h3>
+            LINE無料相談受付中
+          </h3>
+
+          <p class="sub-text">
+            QRコードを読み取って、
+            お気軽にご相談ください。
           </p>
+
+          <div class="qr-box">
+            QRコード<br>
+            200 × 200
+          </div>
+
         </div>
 
       </div>
@@ -650,29 +703,8 @@
   </section>
 
   <footer>
-    © Customer Interview Support
+    © 顧客インタビュー代行サービス
   </footer>
-
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-
-        if (targetId === '#') return;
-
-        e.preventDefault();
-
-        const target = document.querySelector(targetId);
-
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
-```
