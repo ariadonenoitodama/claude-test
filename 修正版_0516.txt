@@ -117,13 +117,66 @@
     ====================== */
 
     .hero{
+      background:#F5F7FF;
       overflow:hidden;
-      padding:0;
+      padding-top:48px;
+      padding-bottom:48px;
     }
 
-    .hero-img{
+    .hero-inner{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+    }
+
+    .hero-copy p{
+      margin-top:24px;
+      margin-bottom:32px;
+      font-size:18px;
+      color:#5C6070;
+    }
+
+    .hero-image{
+      position:relative;
+    }
+
+    .hero-image img{
+      border-radius:24px;
+      border:1px solid #E8ECF8;
+      object-fit:cover;
       width:100%;
-      display:block;
+      height:100%;
+    }
+
+    .hero-mini-card{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .mini-box{
+      background:#fff;
+      border:1px solid #E8ECF8;
+      border-radius:16px;
+      padding:20px;
+      text-align:center;
+    }
+
+    .mini-box svg{
+      width:32px;
+      height:32px;
+      stroke:#2D6EF5;
+      margin:0 auto 12px;
+      fill:none;
+      stroke-width:1.8;
+    }
+
+    .mini-box p{
+      font-size:14px;
+      line-height:1.6;
+      color:#1A1A2E;
     }
 
     /* ======================
@@ -238,12 +291,15 @@
     .qr-box{
       width:200px;
       height:200px;
+      border:2px dashed #B8C4E5;
       border-radius:16px;
       display:flex;
       align-items:center;
       justify-content:center;
       margin-top:24px;
-      overflow:hidden;
+      background:#fff;
+      color:#5C6070;
+      font-size:14px;
     }
 
     footer{
@@ -280,10 +336,24 @@
         font-size:28px;
       }
 
+      .hero-inner,
       .problem-grid,
       .service-cards,
-      .cta-wrapper{
+      .cta-wrapper,
+      .hero-mini-card{
         grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:32px;
+      }
+
+      .hero-copy{
+        order:2;
+      }
+
+      .hero-image{
+        order:1;
       }
 
       .card,
@@ -308,7 +378,69 @@
   ======================= -->
 
   <section class="hero">
-    <img src="images/hero.jpg.png" alt="顧客インタビュー代行サービス" class="hero-img">
+    <div class="container">
+
+      <div class="hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="badge">
+            顧客インタビュー代行サービス
+          </div>
+
+          <h1>
+            売れる言葉は<br>
+            <span class="accent">顧客に聞け</span>
+          </h1>
+
+          <p>
+            売れる理由は、事業主さま自身よりも、
+            お客さんのほうが知っていることがあります。<br>
+            顧客インタビューを通して、
+            HP・LP・SNSで伝えるべき言葉を一緒に整理します。
+          </p>
+
+          <a href="#cta" class="btn">
+            まずは気軽に無料相談
+          </a>
+
+          <div class="hero-mini-card">
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="10" cy="7" r="4"/>
+                <path d="M20 8v6"/>
+                <path d="M23 11h-6"/>
+              </svg>
+              <p>顧客インタビューを代行</p>
+            </div>
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <p>HP・LP改善のヒントを整理</p>
+            </div>
+
+            <div class="mini-box">
+              <svg viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              <p>キャッチコピー制作も支援</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400&auto=format&fit=crop" alt="顧客インタビューの様子">
+        </div>
+
+      </div>
+
+    </div>
   </section>
 
   <!-- ======================
@@ -559,7 +691,8 @@
           </p>
 
           <div class="qr-box">
-            <img src="原田公式LINE.png" alt="原田公式LINE QRコード" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
+            QRコード<br>
+            200 × 200
           </div>
 
         </div>
