@@ -11,6 +11,16 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
+  // 環境変数の存在確認（診断用・後で削除）
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_PASS;
+  if (!gmailUser || !gmailPass) {
+    return res.status(500).json({
+      error: 'Env vars missing',
+      detail: `GMAIL_USER: ${gmailUser ? '設定済み' : '未設定'}, GMAIL_PASS: ${gmailPass ? '設定済み' : '未設定'}`,
+    });
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
