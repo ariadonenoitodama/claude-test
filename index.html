@@ -819,7 +819,8 @@
             thanksMsg.style.display = 'block';
             thanksMsg.scrollIntoView({ behavior: 'smooth' });
           } else {
-            alert('送信に失敗しました。しばらく経ってから再度お試しください。');
+            const errData = await response.json().catch(() => ({}));
+            alert('送信に失敗しました。\n' + (errData.detail || errData.error || response.status));
             submitBtn.textContent = '送信する';
             submitBtn.disabled = false;
           }
