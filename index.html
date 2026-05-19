@@ -166,6 +166,17 @@
     .problem-item p{
       flex:1;
       font-size:18px;
+      position:relative;
+      padding-left:22px;
+    }
+
+    .problem-item p::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:#2D6EF5;
+      font-weight:700;
+      font-size:18px;
     }
 
     .check{
@@ -583,21 +594,21 @@
           <div class="problem-list">
 
             <div class="problem-item">
-              <div class="check">✓</div>
+
               <p>
                 自社の方が絶対いい商品なのに、同業他社に負けてしまう
               </p>
             </div>
 
             <div class="problem-item">
-              <div class="check">✓</div>
+
               <p>
                 会社のHPは立ち上げた時のまま。どう育てればいいか分からない
               </p>
             </div>
 
             <div class="problem-item">
-              <div class="check">✓</div>
+
               <p>
                 SNS投稿を頑張っているが、反応につながっている実感がない
               </p>
