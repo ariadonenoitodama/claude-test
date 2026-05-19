@@ -766,55 +766,63 @@
   </section>
 
   <script>
-    (function(){
-      var form = document.getElementById('contactForm');
-      var thanksMsq = document.getElementById('thanksMsg');
+    (function () {
+      const form = document.getElementById('contactForm');
+      const thanksMsg = document.getElementById('thanksMsg');
+      const submitBtn = form.querySelector('.form-submit');
 
-      function validate(){
-        var ok = true;
-
-        var company = document.getElementById('company');
-        var companyError = document.getElementById('companyError');
-        if(company.value.trim() === ''){
-          company.classList.add('error');
-          companyError.classList.add('visible');
-          ok = false;
-        } else {
-          company.classList.remove('error');
-          companyError.classList.remove('visible');
-        }
-
-        var name = document.getElementById('name');
-        var nameError = document.getElementById('nameError');
-        if(name.value.trim() === ''){
-          name.classList.add('error');
-          nameError.classList.add('visible');
-          ok = false;
-        } else {
-          name.classList.remove('error');
-          nameError.classList.remove('visible');
-        }
-
-        var email = document.getElementById('email');
-        var emailError = document.getElementById('emailError');
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(email.value.trim() === '' || !emailPattern.test(email.value.trim())){
-          email.classList.add('error');
-          emailError.classList.add('visible');
-          ok = false;
-        } else {
-          email.classList.remove('error');
-          emailError.classList.remove('visible');
-        }
-
-        return ok;
-      }
-
-      form.addEventListener('submit', function(e){
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        if(validate()){
-          form.style.display = 'none';
-          thanksMsq.style.display = 'block';
+
+        let hasError = false;
+
+        const company = document.getElementById('company').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        document.getElementById('companyError').style.display = company ? 'none' : 'block';
+        document.getElementById('nameError').style.display = name ? 'none' : 'block';
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        document.getElementById('emailError').style.display = emailRegex.test(email) ? 'none' : 'block';
+
+        if (!company) hasError = true;
+        if (!name) hasError = true;
+        if (!emailRegex.test(email)) hasError = true;
+
+        if (hasError) return;
+
+        submitBtn.textContent = '送信中...';
+        submitBtn.disabled = true;
+
+        const data = {
+          company,
+          name,
+          email,
+          tel: document.getElementById('tel').value.trim(),
+          message: document.getElementById('message').value.trim(),
+        };
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            form.style.display = 'none';
+            thanksMsg.style.display = 'block';
+            thanksMsg.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert('送信に失敗しました。しばらく経ってから再度お試しください。');
+            submitBtn.textContent = '送信する';
+            submitBtn.disabled = false;
+          }
+        } catch (err) {
+          alert('通信エラーが発生しました。しばらく経ってから再度お試しください。');
+          submitBtn.textContent = '送信する';
+          submitBtn.disabled = false;
         }
       });
     })();
