@@ -299,24 +299,76 @@
     ====================== */
 
     .contact-section{
+      background:#f8f8f8;
+    }
+
+    .contact-line-card{
       background:#fff;
+      border-radius:16px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+      padding:40px 32px;
+      max-width:480px;
+      margin:0 auto 40px;
+      text-align:center;
     }
 
-    .contact-layout{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:48px;
-      align-items:start;
+    .contact-line-card h3{
+      font-size:20px;
+      font-weight:700;
+      color:#1A1A2E;
+      margin-bottom:24px;
     }
 
-    @media(max-width:768px){
-      .contact-layout{
-        grid-template-columns:1fr;
-      }
+    .qr-box-lg{
+      width:240px;
+      height:240px;
+      border-radius:16px;
+      border:2px solid #E8ECF8;
+      background:#F5F7FF;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 24px;
+      overflow:hidden;
+    }
+
+    .contact-line-btn{
+      display:inline-flex;
+      margin-bottom:24px;
+    }
+
+    .contact-info-footer{
+      font-size:13px;
+      color:#5C6070;
+      line-height:1.8;
+    }
+
+    .contact-form-card{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+      padding:40px;
+      max-width:640px;
+      margin:0 auto;
+    }
+
+    .contact-form-heading{
+      font-size:16px;
+      font-weight:600;
+      color:#5C6070;
+      text-align:center;
+      margin-bottom:32px;
     }
 
     .contact-form{
       width:100%;
+    }
+
+    @media(max-width:768px){
+      .contact-line-card,
+      .contact-form-card{
+        padding:24px 20px;
+      }
     }
 
     .form-group{
@@ -715,83 +767,73 @@
   <section class="contact-section" id="contact">
     <div class="container">
 
-      <div class="contact-layout">
+      <h2 style="text-align:center;">お問い合わせ</h2>
+      <p class="sub-text" style="text-align:center;margin-bottom:40px;">
+        まずはお気軽にご連絡ください。担当者よりご連絡いたします。
+      </p>
 
-        <!-- 左：お問い合わせフォーム -->
-        <div>
+      <!-- LINE誘導カード -->
+      <div class="contact-line-card">
 
-          <h2>
-            お問い合わせ
-          </h2>
+        <h3>まずはLINEでお気軽にご相談ください</h3>
 
-          <p class="sub-text" style="margin-bottom:40px;">
-            まずはお気軽にご連絡ください。担当者よりご連絡いたします。
-          </p>
-
-          <div class="contact-form">
-
-            <div class="thanks-msg" id="thanksMsg">
-              <p>お問い合わせありがとうございました。<br>担当者よりご連絡いたします。</p>
-            </div>
-
-            <form id="contactForm" novalidate>
-
-              <div class="form-group">
-                <label for="company">貴社名<span class="required">※必須</span></label>
-                <input type="text" id="company" name="company" placeholder="例：株式会社○○">
-                <span class="error-msg" id="companyError">貴社名を入力してください</span>
-              </div>
-
-              <div class="form-group">
-                <label for="name">ご担当者名<span class="required">※必須</span></label>
-                <input type="text" id="name" name="name" placeholder="例：山田 太郎">
-                <span class="error-msg" id="nameError">ご担当者名を入力してください</span>
-              </div>
-
-              <div class="form-group">
-                <label for="email">メールアドレス<span class="required">※必須</span></label>
-                <input type="email" id="email" name="email" placeholder="例：info@example.com">
-                <span class="error-msg" id="emailError">正しいメールアドレスを入力してください</span>
-              </div>
-
-              <div class="form-group">
-                <label for="tel">電話番号<span style="color:#5C6070;font-size:12px;margin-left:4px;">任意</span></label>
-                <input type="tel" id="tel" name="tel" placeholder="例：090-0000-0000">
-              </div>
-
-              <div class="form-group">
-                <label for="message">問い合わせ内容<span style="color:#5C6070;font-size:12px;margin-left:4px;">任意</span></label>
-                <textarea id="message" name="message" placeholder="ご質問・ご要望などをご記入ください"></textarea>
-              </div>
-
-              <button type="submit" class="btn form-submit">送信する</button>
-
-            </form>
-
-          </div>
-
+        <div class="qr-box-lg">
+          <img src="原田公式LINE.png" alt="原田公式LINE QRコード" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
         </div>
 
-        <!-- 右：LINE QR -->
-        <div style="align-self:start;">
+        <a href="#" class="btn contact-line-btn">LINEで無料相談する</a>
 
-          <div class="card" style="text-align:center;">
+        <p class="contact-info-footer">
+          担当：原田<br>
+          mharada24365@gmail.com
+        </p>
 
-            <h3>
-              公式LINEからも無料相談受付中
-            </h3>
+      </div>
 
-            <div class="qr-box">
-              <img src="原田公式LINE.png" alt="原田公式LINE QRコード" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
-            </div>
+      <!-- フォームカード -->
+      <div class="contact-form-card">
 
+        <p class="contact-form-heading">お問い合わせフォームからもご連絡いただけます</p>
+
+        <div class="contact-form">
+
+          <div class="thanks-msg" id="thanksMsg">
+            <p>お問い合わせありがとうございました。<br>担当者よりご連絡いたします。</p>
           </div>
 
-          <p style="margin-top:16px;font-size:20px;font-weight:600;line-height:2;text-align:center;color:#1A1A2E;">
-            質問王国<br>
-            担当　原田<br>
-            mharada24365@gmail.com
-          </p>
+          <form id="contactForm" novalidate>
+
+            <div class="form-group">
+              <label for="company">貴社名<span class="required">※必須</span></label>
+              <input type="text" id="company" name="company" placeholder="例：株式会社○○">
+              <span class="error-msg" id="companyError">貴社名を入力してください</span>
+            </div>
+
+            <div class="form-group">
+              <label for="name">ご担当者名<span class="required">※必須</span></label>
+              <input type="text" id="name" name="name" placeholder="例：山田 太郎">
+              <span class="error-msg" id="nameError">ご担当者名を入力してください</span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">メールアドレス<span class="required">※必須</span></label>
+              <input type="email" id="email" name="email" placeholder="例：info@example.com">
+              <span class="error-msg" id="emailError">正しいメールアドレスを入力してください</span>
+            </div>
+
+            <div class="form-group">
+              <label for="tel">電話番号<span style="color:#5C6070;font-size:12px;margin-left:4px;">任意</span></label>
+              <input type="tel" id="tel" name="tel" placeholder="例：090-0000-0000">
+            </div>
+
+            <div class="form-group">
+              <label for="message">問い合わせ内容<span style="color:#5C6070;font-size:12px;margin-left:4px;">任意</span></label>
+              <textarea id="message" name="message" placeholder="ご質問・ご要望などをご記入ください"></textarea>
+            </div>
+
+            <button type="submit" class="btn form-submit">送信する</button>
+
+          </form>
 
         </div>
 
