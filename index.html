@@ -304,6 +304,94 @@
     }
 
     /* ======================
+       Contact Form
+    ====================== */
+
+    .contact-section{
+      background:#fff;
+    }
+
+    .contact-form{
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    .form-group{
+      margin-bottom:24px;
+    }
+
+    .form-group label{
+      display:block;
+      font-weight:600;
+      font-size:14px;
+      margin-bottom:8px;
+      color:#1A1A2E;
+    }
+
+    .form-group label .required{
+      color:#FF6B6B;
+      margin-left:4px;
+      font-size:12px;
+    }
+
+    .form-group input{
+      width:100%;
+      padding:14px 16px;
+      border:1px solid #DCE5FF;
+      border-radius:8px;
+      font-size:15px;
+      font-family:'Noto Sans JP',sans-serif;
+      color:#1A1A2E;
+      background:#FAFBFF;
+      transition:border-color 0.2s ease, box-shadow 0.2s ease;
+      outline:none;
+    }
+
+    .form-group input:focus{
+      border-color:#2D6EF5;
+      box-shadow:0 0 0 3px rgba(45,110,245,0.12);
+      background:#fff;
+    }
+
+    .form-group input.error{
+      border-color:#FF6B6B;
+    }
+
+    .error-msg{
+      display:none;
+      color:#FF6B6B;
+      font-size:13px;
+      margin-top:6px;
+    }
+
+    .error-msg.visible{
+      display:block;
+    }
+
+    .form-submit{
+      width:100%;
+      padding:18px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    .thanks-msg{
+      display:none;
+      text-align:center;
+      padding:48px 32px;
+      background:#F5F7FF;
+      border-radius:16px;
+      border:1px solid #DCE5FF;
+    }
+
+    .thanks-msg p{
+      font-size:17px;
+      font-weight:600;
+      color:#2D6EF5;
+      line-height:1.8;
+    }
+
+    /* ======================
        Responsive
     ====================== */
 
@@ -565,8 +653,8 @@
           </p>
 
           <div style="margin-top:32px;">
-            <a href="#" class="btn">
-              LINEで無料相談する
+            <a href="#contact" class="btn">
+              無料相談する
             </a>
           </div>
 
@@ -593,6 +681,111 @@
 
     </div>
   </section>
+
+  <!-- ======================
+       SECTION 6: Contact Form
+  ======================= -->
+
+  <section class="contact-section" id="contact">
+    <div class="container">
+
+      <h2 style="text-align:center;">
+        お問い合わせ
+      </h2>
+
+      <p class="sub-text" style="text-align:center;margin-bottom:40px;">
+        まずはお気軽にご連絡ください。担当者よりご連絡いたします。
+      </p>
+
+      <div class="contact-form">
+
+        <div class="thanks-msg" id="thanksMsg">
+          <p>お問い合わせありがとうございました。<br>担当者よりご連絡いたします。</p>
+        </div>
+
+        <form id="contactForm" novalidate>
+
+          <div class="form-group">
+            <label for="company">貴社名<span class="required">※必須</span></label>
+            <input type="text" id="company" name="company" placeholder="例：株式会社○○">
+            <span class="error-msg" id="companyError">貴社名を入力してください</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">担当者様お名前<span class="required">※必須</span></label>
+            <input type="text" id="name" name="name" placeholder="例：山田 太郎">
+            <span class="error-msg" id="nameError">担当者様お名前を入力してください</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス<span class="required">※必須</span></label>
+            <input type="email" id="email" name="email" placeholder="例：info@example.com">
+            <span class="error-msg" id="emailError">正しいメールアドレスを入力してください</span>
+          </div>
+
+          <button type="submit" class="btn form-submit">送信する</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var form = document.getElementById('contactForm');
+      var thanksMsq = document.getElementById('thanksMsg');
+
+      function validate(){
+        var ok = true;
+
+        var company = document.getElementById('company');
+        var companyError = document.getElementById('companyError');
+        if(company.value.trim() === ''){
+          company.classList.add('error');
+          companyError.classList.add('visible');
+          ok = false;
+        } else {
+          company.classList.remove('error');
+          companyError.classList.remove('visible');
+        }
+
+        var name = document.getElementById('name');
+        var nameError = document.getElementById('nameError');
+        if(name.value.trim() === ''){
+          name.classList.add('error');
+          nameError.classList.add('visible');
+          ok = false;
+        } else {
+          name.classList.remove('error');
+          nameError.classList.remove('visible');
+        }
+
+        var email = document.getElementById('email');
+        var emailError = document.getElementById('emailError');
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(email.value.trim() === '' || !emailPattern.test(email.value.trim())){
+          email.classList.add('error');
+          emailError.classList.add('visible');
+          ok = false;
+        } else {
+          email.classList.remove('error');
+          emailError.classList.remove('visible');
+        }
+
+        return ok;
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(validate()){
+          form.style.display = 'none';
+          thanksMsq.style.display = 'block';
+        }
+      });
+    })();
+  </script>
 
   <footer>
     © 顧客インタビュー代行サービス
