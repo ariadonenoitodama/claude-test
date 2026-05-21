@@ -122,13 +122,88 @@
     ====================== */
 
     .hero{
+      background:#fff;
       overflow:hidden;
       padding:0;
     }
 
-    .hero-img{
+    .hero-inner{
+      display:flex;
+      align-items:stretch;
+      aspect-ratio:16/9;
       width:100%;
+    }
+
+    .hero-text{
+      flex:0 0 50%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:64px 48px;
+      background:#fff;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-pre{
+      font-size:20px;
+      color:#555;
+      font-weight:400;
+      margin:0 0 4px;
+    }
+
+    .hero-catch{
+      font-size:clamp(56px,7vw,96px);
+      font-weight:800;
+      line-height:1.1;
+      color:#1a1a1a;
+      margin:0 0 1em;
+    }
+
+    .hero-service{
+      font-size:20px;
+      color:#2D6EF5;
+      font-weight:600;
+      margin:0 0 40px;
+    }
+
+    .hero-btn{
+      text-decoration:none;
+    }
+
+    .hero-image{
+      flex:0 0 50%;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:right center;
       display:block;
+    }
+
+
+    @media(max-width:768px){
+      .hero-inner{
+        flex-direction:column;
+        min-height:auto;
+      }
+      .hero-text{
+        flex:none;
+        padding:48px 24px 32px;
+      }
+      .hero-image{
+        flex:none;
+        height:240px;
+      }
+      .hero-image::before{
+        background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,0) 40%);
+      }
     }
 
     /* ======================
@@ -608,7 +683,17 @@
   ======================= -->
 
   <section class="hero">
-    <img src="images/hero.jpg.png" alt="顧客インタビュー代行サービス" class="hero-img">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-pre">ＰＲは考えるより</p>
+        <h1 class="hero-catch">聴く</h1>
+        <p class="hero-service">顧客インタビュー</p>
+        <a href="#contact" class="btn hero-btn">今すぐ申し込む</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/new②.png" alt="顧客インタビューのイラスト">
+      </div>
+    </div>
   </section>
 
   <!-- ======================
