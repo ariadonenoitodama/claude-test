@@ -10,6 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --color-accent:       #C4593A;
+      --color-accent-dark:  #9E3E24;
+      --color-accent-light: #F5EAE6;
+      --color-base:         #FAF9F6;
+      --color-text-main:    #1A1A1A;
+      --color-text-sub:     #6B6B6B;
+      --color-border:       #E8E4DF;
+    }
+
     *{
       margin:0;
       padding:0;
@@ -18,8 +28,8 @@
 
     body{
       font-family:'Noto Sans JP',sans-serif;
-      color:#1A1A2E;
-      background:#FFFFFF;
+      color:var(--color-text-main);
+      background:var(--color-base);
       line-height:1.8;
       font-size:16px;
     }
@@ -56,6 +66,8 @@
       font-weight:700;
       line-height:1.4;
       margin-bottom:24px;
+      border-left:3px solid var(--color-accent);
+      padding-left:0.75rem;
     }
 
     h3{
@@ -64,25 +76,31 @@
       margin-bottom:16px;
     }
 
+    h3::before{
+      content:"● ";
+      color:var(--color-accent);
+      font-size:0.7em;
+    }
+
     p{
-      color:#1A1A2E;
+      color:var(--color-text-main);
     }
 
     .sub-text{
-      color:#5C6070;
+      color:var(--color-text-sub);
     }
 
     .accent{
-      color:#2D6EF5;
+      color:var(--color-accent);
     }
 
     .badge{
       display:inline-block;
       padding:6px 12px;
       border-radius:999px;
-      background:#F5F7FF;
-      color:#2D6EF5;
-      border:1px solid #DCE5FF;
+      background:var(--color-accent-light);
+      color:var(--color-accent);
+      border:1px solid var(--color-border);
       font-size:14px;
       font-weight:600;
       margin-bottom:24px;
@@ -92,7 +110,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      background:#2D6EF5;
+      background:var(--color-accent);
       color:#fff;
       border-radius:8px;
       padding:16px 40px;
@@ -104,17 +122,17 @@
     }
 
     .btn:hover{
-      background:#2459c8;
+      background:var(--color-accent-dark);
       transform:translateY(-2px);
-      box-shadow:0 8px 24px rgba(45,110,245,0.35);
+      box-shadow:0 8px 24px rgba(196,89,58,0.35);
     }
 
     .card{
       background:#fff;
-      border:1px solid #E8ECF8;
+      border:1px solid var(--color-border);
       border-radius:16px;
       padding:32px;
-      box-shadow:0 4px 24px rgba(45,110,245,0.07);
+      box-shadow:0 4px 16px rgba(0,0,0,0.06);
     }
 
     /* ======================
@@ -148,25 +166,28 @@
     }
 
     .hero-pre{
-      font-size:20px;
-      color:#555;
+      font-size:1rem;
+      color:var(--color-text-sub);
       font-weight:400;
+      letter-spacing:0.05em;
       margin:0 0 4px;
     }
 
     .hero-catch{
-      font-size:clamp(56px,7vw,96px);
-      font-weight:800;
-      line-height:1.1;
-      color:#1a1a1a;
-      margin:0 0 1em;
+      font-size:clamp(2.5rem,6vw,4rem);
+      font-weight:700;
+      line-height:1.2;
+      letter-spacing:-0.01em;
+      color:var(--color-text-main);
+      margin:0 0 0.5rem;
     }
 
-    .hero-service{
-      font-size:20px;
-      color:#2D6EF5;
-      font-weight:600;
-      margin:0 0 40px;
+    .hero-sub{
+      font-size:1.1rem;
+      color:var(--color-text-sub);
+      margin-top:0.5rem;
+      margin-bottom:1.5rem;
+      line-height:1.7;
     }
 
     .hero-btn{
@@ -187,22 +208,43 @@
       display:block;
     }
 
+    .hero-image::before{
+      content:'';
+      position:absolute;
+      inset:0 auto 0 0;
+      width:20%;
+      background:linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
 
     @media(max-width:768px){
       .hero-inner{
         flex-direction:column;
+        aspect-ratio:unset;
         min-height:auto;
       }
       .hero-text{
         flex:none;
-        padding:48px 24px 32px;
+        padding:40px 24px 28px;
+        align-items:flex-start;
+        text-align:left;
+      }
+      .hero-catch{
+        font-size:clamp(2rem,10vw,2.8rem);
+      }
+      .hero-sub{
+        font-size:0.9rem;
       }
       .hero-image{
         flex:none;
-        height:240px;
+        height:220px;
       }
       .hero-image::before{
-        background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,0) 40%);
+        inset:0 0 auto 0;
+        width:100%;
+        height:40%;
+        background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,0) 100%);
       }
     }
 
@@ -249,7 +291,7 @@
       content:"✓";
       position:absolute;
       left:0;
-      color:#2D6EF5;
+      color:var(--color-accent);
       font-weight:700;
       font-size:18px;
     }
@@ -258,7 +300,7 @@
       width:26px;
       height:26px;
       border-radius:50%;
-      background:#2D6EF5;
+      background:var(--color-accent);
       color:#fff;
       font-size:13px;
       font-weight:700;
@@ -273,7 +315,7 @@
     ====================== */
 
     .service-section{
-      background:#F5F7FF;
+      background:var(--color-accent-light);
     }
 
     .service-cards{
@@ -290,7 +332,7 @@
 
     .service-card:hover{
       transform:translateY(-5px);
-      box-shadow:0 16px 40px rgba(45,110,245,0.18);
+      box-shadow:0 16px 40px rgba(196,89,58,0.15);
     }
 
     .card-voice{
@@ -377,7 +419,7 @@
     ====================== */
 
     .cta-section{
-      background:#F5F7FF;
+      background:var(--color-accent-light);
     }
 
     .cta-wrapper{
@@ -389,18 +431,18 @@
 
     .price-box{
       background:#fff;
-      border:1px solid #E8ECF8;
+      border:1px solid var(--color-border);
       border-radius:16px;
       padding:40px;
-      box-shadow:0 4px 24px rgba(45,110,245,0.07);
+      box-shadow:0 4px 16px rgba(0,0,0,0.06);
     }
 
     .qr-box{
       width:200px;
       height:200px;
       border-radius:16px;
-      border:2px solid #E8ECF8;
-      background:#F5F7FF;
+      border:2px solid var(--color-border);
+      background:var(--color-accent-light);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -410,11 +452,11 @@
 
     footer{
       padding:40px 0;
-      border-top:1px solid #E8ECF8;
+      border-top:1px solid var(--color-border);
       text-align:center;
-      color:#5C6070;
+      color:var(--color-text-sub);
       font-size:14px;
-      background:#FAFBFF;
+      background:var(--color-base);
     }
 
     /* ======================
@@ -422,65 +464,62 @@
     ====================== */
 
     .contact-section{
-      background:#f8f8f8;
+      background:var(--color-accent-light);
     }
 
-    .contact-line-card{
+    .contact-lead{
+      text-align:center;
+      color:var(--color-text-sub);
+      margin-bottom:2rem;
+      font-size:1rem;
+    }
+
+    .cta-primary{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1rem;
+      padding:2rem;
       background:#fff;
-      border-radius:16px;
-      box-shadow:0 4px 24px rgba(0,0,0,0.08);
-      padding:40px 32px;
-      max-width:480px;
-      margin:0 auto 40px;
+      border:2px solid var(--color-accent);
+      border-radius:12px;
+      margin:0 auto 0;
+      max-width:360px;
+    }
+
+    .cta-primary img{
+      width:200px;
+      height:200px;
+      object-fit:contain;
+      border-radius:8px;
+    }
+
+    .cta-label{
+      font-size:0.9rem;
+      color:var(--color-text-sub);
       text-align:center;
     }
 
-    .contact-line-card h3{
-      font-size:20px;
-      font-weight:700;
-      color:#1A1A2E;
-      margin-bottom:24px;
+    .cta-secondary{
+      margin-top:3rem;
+      padding-top:2rem;
+      border-top:1px solid var(--color-border);
     }
 
-    .qr-box-lg{
-      width:240px;
-      height:240px;
-      border-radius:16px;
-      border:2px solid #E8ECF8;
-      background:#F5F7FF;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 24px;
-      overflow:hidden;
-    }
-
-    .contact-line-btn{
-      display:inline-flex;
-      margin-bottom:24px;
-    }
-
-    .contact-info-footer{
-      font-size:13px;
-      color:#5C6070;
-      line-height:1.8;
+    .cta-secondary-label{
+      font-size:0.95rem;
+      color:var(--color-text-sub);
+      text-align:center;
+      margin-bottom:1.5rem;
     }
 
     .contact-form-card{
       background:#fff;
       border-radius:16px;
-      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+      box-shadow:0 4px 16px rgba(0,0,0,0.06);
       padding:40px;
       max-width:640px;
       margin:0 auto;
-    }
-
-    .contact-form-heading{
-      font-size:16px;
-      font-weight:600;
-      color:#5C6070;
-      text-align:center;
-      margin-bottom:32px;
     }
 
     .contact-form{
@@ -488,7 +527,14 @@
     }
 
     @media(max-width:768px){
-      .contact-line-card,
+      .cta-primary{
+        max-width:100%;
+        padding:1.5rem;
+      }
+      .cta-secondary{
+        margin-top:2rem;
+        padding-top:1.5rem;
+      }
       .contact-form-card{
         padding:24px 20px;
       }
@@ -503,7 +549,7 @@
       font-weight:600;
       font-size:14px;
       margin-bottom:8px;
-      color:#1A1A2E;
+      color:var(--color-text-main);
     }
 
     .form-group label .required{
@@ -512,15 +558,21 @@
       font-size:12px;
     }
 
+    .form-group label .optional{
+      color:#999;
+      margin-left:4px;
+      font-size:12px;
+    }
+
     .form-group input{
       width:100%;
       padding:14px 16px;
-      border:1px solid #DCE5FF;
+      border:1px solid var(--color-border);
       border-radius:8px;
       font-size:15px;
       font-family:'Noto Sans JP',sans-serif;
-      color:#1A1A2E;
-      background:#FAFBFF;
+      color:var(--color-text-main);
+      background:#fff;
       transition:border-color 0.2s ease, box-shadow 0.2s ease;
       outline:none;
     }
@@ -528,12 +580,12 @@
     .form-group textarea{
       width:100%;
       padding:14px 16px;
-      border:1px solid #DCE5FF;
+      border:1px solid var(--color-border);
       border-radius:8px;
       font-size:15px;
       font-family:'Noto Sans JP',sans-serif;
-      color:#1A1A2E;
-      background:#FAFBFF;
+      color:var(--color-text-main);
+      background:#fff;
       transition:border-color 0.2s ease, box-shadow 0.2s ease;
       outline:none;
       resize:vertical;
@@ -541,14 +593,14 @@
     }
 
     .form-group textarea:focus{
-      border-color:#2D6EF5;
-      box-shadow:0 0 0 3px rgba(45,110,245,0.12);
+      border-color:var(--color-accent);
+      box-shadow:0 0 0 3px rgba(196,89,58,0.12);
       background:#fff;
     }
 
     .form-group input:focus{
-      border-color:#2D6EF5;
-      box-shadow:0 0 0 3px rgba(45,110,245,0.12);
+      border-color:var(--color-accent);
+      box-shadow:0 0 0 3px rgba(196,89,58,0.12);
       background:#fff;
     }
 
@@ -578,15 +630,15 @@
       display:none;
       text-align:center;
       padding:48px 32px;
-      background:#F5F7FF;
+      background:var(--color-accent-light);
       border-radius:16px;
-      border:1px solid #DCE5FF;
+      border:1px solid var(--color-border);
     }
 
     .thanks-msg p{
       font-size:17px;
       font-weight:600;
-      color:#2D6EF5;
+      color:var(--color-accent);
       line-height:1.8;
     }
 
@@ -599,25 +651,25 @@
       bottom: 32px;
       right: 32px;
       z-index: 999;
-      background: #2D6EF5;
+      background: var(--color-accent);
       color: #fff;
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 14px;
       font-weight: 600;
       padding: 14px 24px;
       border-radius: 999px;
-      box-shadow: 0 8px 24px rgba(45,110,245,0.4);
+      box-shadow: 0 8px 24px rgba(196,89,58,0.4);
       text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
     .float-contact-btn:hover {
-      background: #2459c8;
+      background: var(--color-accent-dark);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(45,110,245,0.5);
+      box-shadow: 0 12px 32px rgba(196,89,58,0.5);
     }
 
     @media(max-width:768px){
@@ -647,12 +699,13 @@
         padding:0 16px;
       }
 
-      h1{
-        font-size:38px;
+      h2{
+        font-size:22px;
+        padding-left:0.6rem;
       }
 
-      h2{
-        font-size:28px;
+      h3{
+        font-size:17px;
       }
 
       .service-cards,
@@ -662,12 +715,22 @@
 
       .card,
       .price-box{
-        padding:24px;
+        padding:20px;
       }
 
       .qr-box{
         width:100%;
         max-width:200px;
+      }
+
+      .btn{
+        padding:14px 28px;
+        font-size:14px;
+      }
+
+      .form-submit{
+        font-size:15px;
+        padding:16px;
       }
 
     }
@@ -685,10 +748,10 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <p class="hero-pre">ＰＲは考えるより</p>
-        <h1 class="hero-catch">聴く</h1>
-        <p class="hero-service">顧客インタビュー</p>
-        <a href="#contact" class="btn hero-btn">今すぐ申し込む</a>
+        <p class="hero-pre">PRは、考えるより</p>
+        <h1 class="hero-catch">聴く。</h1>
+        <p class="hero-sub">顧客インタビュー代行で、あなたの本当の強みを発見する。</p>
+        <a href="#contact" class="btn hero-btn">まずは無料相談</a>
       </div>
       <div class="hero-image">
         <img src="images/new②.png" alt="顧客インタビューのイラスト">
@@ -890,69 +953,56 @@
   <section class="contact-section" id="contact">
     <div class="container">
 
-      <h2 style="text-align:center;">お問い合わせ</h2>
-      <p class="sub-text" style="text-align:center;margin-bottom:40px;">
-        まずはお気軽にご連絡ください。担当者よりご連絡いたします。
-      </p>
+      <h2>まずは無料相談から</h2>
+      <p class="contact-lead">お気軽にLINEでご連絡ください。担当の原田よりご返信いたします。</p>
 
-      <!-- LINE誘導カード -->
-      <div class="contact-line-card">
-
-        <h3>まずはLINEでお気軽にご相談ください</h3>
-
-        <div class="qr-box-lg">
-          <img src="原田公式LINE.png" alt="原田公式LINE QRコード" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
-        </div>
-
-        <p class="contact-info-footer">
-          担当：原田<br>
-          mharada24365@gmail.com
-        </p>
-
+      <!-- メインCTA：LINE -->
+      <div class="cta-primary">
+        <img src="原田公式LINE.png" alt="原田公式LINE QRコード">
+        <p class="cta-label">QRコードを読み取ってご連絡ください</p>
       </div>
 
-      <!-- フォームカード -->
-      <div class="contact-form-card">
+      <!-- サブCTA：フォーム -->
+      <div class="cta-secondary">
+        <p class="cta-secondary-label">LINEが難しい方はフォームからどうぞ</p>
 
-        <p class="contact-form-heading">お問い合わせフォームからもご連絡いただけます</p>
+        <div class="contact-form-card">
+          <div class="contact-form">
 
-        <div class="contact-form">
+            <div class="thanks-msg" id="thanksMsg">
+              <p>お問い合わせありがとうございました。<br>担当の原田よりご連絡いたします。</p>
+            </div>
 
-          <div class="thanks-msg" id="thanksMsg">
-            <p>お問い合わせありがとうございました。<br>担当者よりご連絡いたします。</p>
+            <form id="contactForm" novalidate>
+
+              <div class="form-group">
+                <label for="company">貴社名<span class="optional">任意</span></label>
+                <input type="text" id="company" name="company" placeholder="例：株式会社○○">
+              </div>
+
+              <div class="form-group">
+                <label for="name">ご担当者名<span class="required">※必須</span></label>
+                <input type="text" id="name" name="name" placeholder="例：山田 太郎">
+                <span class="error-msg" id="nameError">ご担当者名を入力してください</span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">メールアドレス<span class="required">※必須</span></label>
+                <input type="email" id="email" name="email" placeholder="例：info@example.com">
+                <span class="error-msg" id="emailError">正しいメールアドレスを入力してください</span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">問い合わせ内容<span class="optional">任意</span></label>
+                <textarea id="message" name="message" placeholder="ご質問・ご要望などをご記入ください"></textarea>
+              </div>
+
+              <button type="submit" class="btn form-submit">送信する</button>
+
+            </form>
+
           </div>
-
-          <form id="contactForm" novalidate>
-
-            <div class="form-group">
-              <label for="company">貴社名<span class="required">※必須</span></label>
-              <input type="text" id="company" name="company" placeholder="例：株式会社○○">
-              <span class="error-msg" id="companyError">貴社名を入力してください</span>
-            </div>
-
-            <div class="form-group">
-              <label for="name">ご担当者名<span class="required">※必須</span></label>
-              <input type="text" id="name" name="name" placeholder="例：山田 太郎">
-              <span class="error-msg" id="nameError">ご担当者名を入力してください</span>
-            </div>
-
-            <div class="form-group">
-              <label for="email">メールアドレス<span class="required">※必須</span></label>
-              <input type="email" id="email" name="email" placeholder="例：info@example.com">
-              <span class="error-msg" id="emailError">正しいメールアドレスを入力してください</span>
-            </div>
-
-            <div class="form-group">
-              <label for="message">問い合わせ内容<span style="color:#5C6070;font-size:12px;margin-left:4px;">任意</span></label>
-              <textarea id="message" name="message" placeholder="ご質問・ご要望などをご記入ください"></textarea>
-            </div>
-
-            <button type="submit" class="btn form-submit">送信する</button>
-
-          </form>
-
         </div>
-
       </div>
 
     </div>
@@ -963,10 +1013,24 @@
   </footer>
 
   <a href="#contact" class="float-contact-btn">
-    ✉ お問い合わせ
+    ✉ 無料相談する
   </a>
 
   <script>
+    (function () {
+      const heroSection = document.querySelector('.hero');
+      const floatBtn = document.querySelector('.float-contact-btn');
+      if (heroSection && floatBtn) {
+        floatBtn.style.opacity = '0';
+        floatBtn.style.pointerEvents = 'none';
+        const heroObserver = new IntersectionObserver(([entry]) => {
+          floatBtn.style.opacity = entry.isIntersecting ? '0' : '1';
+          floatBtn.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+        }, { threshold: 0 });
+        heroObserver.observe(heroSection);
+      }
+    })();
+
     (function () {
       const form = document.getElementById('contactForm');
       const thanksMsg = document.getElementById('thanksMsg');
@@ -981,13 +1045,11 @@
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
 
-        document.getElementById('companyError').style.display = company ? 'none' : 'block';
         document.getElementById('nameError').style.display = name ? 'none' : 'block';
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         document.getElementById('emailError').style.display = emailRegex.test(email) ? 'none' : 'block';
 
-        if (!company) hasError = true;
         if (!name) hasError = true;
         if (!emailRegex.test(email)) hasError = true;
 
